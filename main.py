@@ -40,4 +40,6 @@ def send_alert(chat_id, message):
 
     # Remove webhook to avoid conflicts with polling
     bot.delete_webhook(drop_pending_updates=True)
-    bot.infinity_polling()
+print("Bot is running...")
+
+bot.infinity_polling()
