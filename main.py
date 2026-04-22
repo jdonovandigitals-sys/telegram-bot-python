@@ -9,10 +9,15 @@ load_dotenv()
 
 # Replace 'TELEGRAM_BOT_TOKEN' with the token you received from BotFather
 TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
-try:
-    bot = telebot.TeleBot(TOKEN)
-    register_commands(bot)
 
+bot = telebot.TeleBot(TOKEN)
+register_commands(bot)
+
+def send_alert(chat_id, message):
+    try:
+        bot.send_message(chat_id, message)
+    except Exception as e:
+        print(f"Error sending alert: {e}")
     @bot.message_handler(commands=['start', 'hello'])
     def send_welcome(message):
         """
